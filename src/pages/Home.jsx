@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import { Carousel } from "react-bootstrap"; 
+import { Carousel } from "react-bootstrap";
 
 function Home() {
+  const user = JSON.parse(localStorage.getItem("user")); // Verificar si hay sesión
+
   const musicaDelMomento = [
     { 
       titulo: "Canción Pop 🎶", 
@@ -40,7 +42,11 @@ function Home() {
       {/* Hero Section */}
       <div className="p-5 mb-4 bg-primary text-white rounded-3 shadow-sm text-center">
         <h1 className="display-6 fw-bold">
-          Bienvenido a <span className="text-warning">Kodigo Music 🎵</span>
+          {user ? (
+            <>Bienvenido, <span className="text-warning">{user.name} 🎵</span></>
+          ) : (
+            <>Bienvenido a <span className="text-warning">Kodigo Music 🎵</span></>
+          )}
         </h1>
         <p className="fs-5">
           Tu música favorita en un solo lugar, disponible en cualquier dispositivo.
@@ -63,7 +69,7 @@ function Home() {
                   className="d-block w-100 img-fluid rounded-3"
                   src={cancion.imagen}
                   alt={`Portada de ${cancion.titulo}`}
-                  style={{ objectFit: "cover", maxHeight: "450px" }} // evita que se deforme
+                  style={{ objectFit: "cover", maxHeight: "450px" }}
                 />
                 <Carousel.Caption className="bg-dark bg-opacity-75 rounded p-2">
                   <h3 className="h5">{cancion.titulo}</h3>

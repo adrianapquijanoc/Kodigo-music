@@ -39,7 +39,7 @@ function Home() {
     <div className="text-white bg-dark">
       {/* Hero Section */}
       <div className="p-5 mb-4 bg-black text-center">
-        <h1 className="display-4 fw-bold">Bienvenido a Kodigo Music 🎵</h1>
+        <h1 className="display-4 fw-bold">Bienvenido a Kodigo Music 123🎵</h1>
         <p className="lead">Tu música favorita en un solo lugar, disponible en cualquier dispositivo.</p>
         <Link to="/about" className="btn btn-success btn-lg mt-3">
           Explorar ahora

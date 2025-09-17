@@ -16,24 +16,31 @@ function Register() {
   return (
     <div className="container my-5 px-3">
       <div className="row justify-content-center">
-        {/* Responsive col: en XS ocupa 12, en SM 10, en MD 8 y en LG 6 */}
+        {/* Responsive col: XS=12, SM=10, MD=8, LG=6 */}
         <div className="col-12 col-sm-10 col-md-8 col-lg-6">
-          <div className="card shadow-lg p-4">
+          <div className="card shadow-lg p-4 border-0 rounded-4">
             {/* Header */}
-            <div className="card-header bg-dark text-white text-center mb-4 rounded-top">
-              <h3 className="mb-0">
-                <i className="bi bi-person-plus-fill me-2"></i>Registro
+            <div className="text-center mb-4">
+              <h3 className="fw-bold text-primary">
+                <i className="bi bi-person-plus-fill me-2"></i>
+                Registro
               </h3>
+              <p className="text-muted mb-0 fs-6">
+                Crea tu cuenta y empieza a disfrutar de la música 🎶
+              </p>
             </div>
 
             {/* Form */}
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
               {/* Nombre */}
               <div className="mb-3">
-                <label className="form-label">Nombre</label>
+                <label className="form-label fw-semibold">Nombre</label>
                 <input
                   type="text"
-                  className={`form-control ${errors.name ? "is-invalid" : ""}`}
+                  className={`form-control form-control-lg ${
+                    errors.name ? "is-invalid" : ""
+                  }`}
+                  placeholder="Ej: Juan Pérez"
                   {...register("name", { required: "El nombre es obligatorio" })}
                 />
                 {errors.name && (
@@ -43,10 +50,13 @@ function Register() {
 
               {/* Correo */}
               <div className="mb-3">
-                <label className="form-label">Correo</label>
+                <label className="form-label fw-semibold">Correo</label>
                 <input
                   type="email"
-                  className={`form-control ${errors.email ? "is-invalid" : ""}`}
+                  className={`form-control form-control-lg ${
+                    errors.email ? "is-invalid" : ""
+                  }`}
+                  placeholder="ejemplo@correo.com"
                   {...register("email", {
                     required: "El correo es obligatorio",
                     pattern: {
@@ -62,12 +72,13 @@ function Register() {
 
               {/* Contraseña */}
               <div className="mb-3">
-                <label className="form-label">Contraseña</label>
+                <label className="form-label fw-semibold">Contraseña</label>
                 <input
                   type="password"
-                  className={`form-control ${
+                  className={`form-control form-control-lg ${
                     errors.password ? "is-invalid" : ""
                   }`}
+                  placeholder="Mínimo 6 caracteres"
                   {...register("password", {
                     required: "La contraseña es obligatoria",
                     minLength: {
@@ -85,11 +96,18 @@ function Register() {
 
               {/* Botón */}
               <div className="d-grid mt-4">
-                <button type="submit" className="btn btn-primary btn-lg">
+                <button type="submit" className="btn btn-primary btn-lg rounded-3">
                   Registrarse
                 </button>
               </div>
             </form>
+          </div>
+
+          {/* Nota extra abajo */}
+          <div className="text-center mt-3">
+            <p className="small text-muted">
+              ¿Ya tienes cuenta? <a href="/login">Inicia sesión</a>
+            </p>
           </div>
         </div>
       </div>

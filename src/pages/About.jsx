@@ -2,84 +2,112 @@ import { Link } from "react-router-dom";
 
 function About() {
   return (
-    <div className="bg-light min-vh-100 d-flex align-items-center py-5">
+    <div className="about-hero min-vh-100 d-flex flex-column justify-content-center py-5 text-white">
       <div className="container">
         <div className="row align-items-center">
           {/* Texto */}
-          <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0">
-            <h2 className="fw-bold display-5 text-primary">
-              Explora <span className="text-dark">Kodigo Music</span>
-            </h2>
-            <p className="fs-5 text-secondary">
-              Descubre canciones, crea playlists y disfruta de la mejor experiencia
-              musical en cualquier dispositivo. 🎧
+          <div className="col-12 col-md-6 mb-5 mb-md-0 text-center text-md-start">
+            <h1 className="display-4 fw-bold gradient-text mb-3">
+              Explora <span>Kodigo Music</span>
+            </h1>
+            <p className="fs-5 text-light mb-4">
+              Descubre canciones, crea playlists y disfruta de la mejor experiencia musical en cualquier dispositivo. 🎧
             </p>
-            <Link to="/register" className="btn btn-primary btn-lg mt-3">
+            <Link to="/register" className="btn btn-lg btn-glow">
               Empieza ahora
             </Link>
           </div>
 
           {/* Imagen ilustrativa */}
           <div className="col-12 col-md-6 text-center">
-            <div className="position-relative">
+            <div className="position-relative d-inline-block">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/727/727245.png"
                 alt="Explora música"
-                className="img-fluid rounded shadow-lg"
-                style={{ maxHeight: "300px", objectFit: "contain" }}
+                className="img-fluid rounded-circle shadow-lg about-img"
               />
-              {/* Fondo decorativo sutil */}
-              <div
-                className="position-absolute top-50 start-50 translate-middle rounded-circle"
-                style={{
-                  width: "220px",
-                  height: "220px",
-                  background: "rgba(13,110,253,0.1)",
-                  zIndex: -1,
-                }}
-              ></div>
+              {/* Fondo decorativo animado */}
+              <div className="animated-bg"></div>
             </div>
           </div>
         </div>
 
-        {/* Sección adicional de información */}
-        <div className="row mt-5 text-center">
-          <div className="col-md-4 mb-4">
-            <div className="p-4 bg-white shadow rounded h-100">
-              <i className="bi bi-music-note-beamed fs-1 text-primary mb-3"></i>
-              <h5 className="fw-bold">Música Infinita</h5>
-              <p className="text-muted">Accede a miles de canciones de todos los géneros.</p>
+        {/* Sección de beneficios */}
+        <div className="row text-center mt-5">
+          {[
+            { icon: "bi-music-note-beamed", title: "Música Infinita", desc: "Accede a miles de canciones de todos los géneros." },
+            { icon: "bi-play-btn", title: "Crea Playlists", desc: "Organiza tu música favorita como quieras." },
+            { icon: "bi-phone", title: "Multidispositivo", desc: "Disfruta tu música en móvil, tablet o desktop." }
+          ].map((item, i) => (
+            <div key={i} className="col-md-4 mb-4">
+              <div className="p-4 rounded shadow-lg bg-dark benefit-card h-100">
+                <i className={`bi ${item.icon} fs-1 mb-3 text-gradient`}></i>
+                <h5 className="fw-bold mb-2">{item.title}</h5>
+                <p className="text-light">{item.desc}</p>
+              </div>
             </div>
-          </div>
-          <div className="col-md-4 mb-4">
-            <div className="p-4 bg-white shadow rounded h-100">
-              <i className="bi bi-play-btn fs-1 text-primary mb-3"></i>
-              <h5 className="fw-bold">Crea tus Playlists</h5>
-              <p className="text-muted">Organiza tu música favorita como quieras.</p>
-            </div>
-          </div>
-          <div className="col-md-4 mb-4">
-            <div className="p-4 bg-white shadow rounded h-100">
-              <i className="bi bi-phone fs-1 text-primary mb-3"></i>
-              <h5 className="fw-bold">Dispositivos Múltiples</h5>
-              <p className="text-muted">Disfruta tu música en móvil, tablet o desktop.</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
       {/* Estilos extra */}
       <style>{`
-        body {
-          background-color: #f8f9fa;
+        .about-hero {
+          background: linear-gradient(135deg, #0d6efd, #6610f2);
         }
-        .btn-primary {
-          background-color: #0d6efd;
-          border-color: #0d6efd;
+        .gradient-text {
+          background: linear-gradient(90deg, #ff6ec4, #7873f5);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
-        .btn-primary:hover {
-          background-color: #0b5ed7;
-          border-color: #0a58ca;
+        .btn-glow {
+          background-color: #ff6ec4;
+          color: white;
+          border: none;
+          padding: 0.75rem 2rem;
+          font-size: 1.2rem;
+          border-radius: 50px;
+          transition: all 0.3s ease;
+          box-shadow: 0 0 20px rgba(255, 110, 196, 0.6);
+        }
+        .btn-glow:hover {
+          box-shadow: 0 0 30px rgba(255, 110, 196, 0.9);
+          transform: translateY(-2px);
+        }
+        .about-img {
+          width: 220px;
+          height: 220px;
+          object-fit: cover;
+        }
+        .animated-bg {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 260px;
+          height: 260px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(255,110,196,0.3) 0%, rgba(102,16,242,0.2) 100%);
+          animation: pulse 3s infinite;
+          z-index: -1;
+        }
+        @keyframes pulse {
+          0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.7; }
+          50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+          100% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.7; }
+        }
+        .benefit-card {
+          background: rgba(255,255,255,0.05);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .benefit-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+        }
+        .text-gradient {
+          background: linear-gradient(90deg, #ff6ec4, #7873f5);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
       `}</style>
     </div>
@@ -87,5 +115,4 @@ function About() {
 }
 
 export default About;
-
 

@@ -1,10 +1,8 @@
-import React from "react"
-
 function About() {
   return (
     <div className="container my-5">
-      <h2>Explorar Música</h2>
-      <p>Aquí podrás descubrir playlists, artistas y nuevos lanzamientos al estilo Spotify/Deezer/Apple Music.</p>
+      <h2>Explora Kodigo Music</h2>
+      <p>Descubre canciones, crea playlists y disfruta de la mejor experiencia musical.</p>
     </div>
   )
 }

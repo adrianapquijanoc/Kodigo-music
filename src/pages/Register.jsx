@@ -10,14 +10,13 @@ function Register() {
   } = useForm()
 
   const onSubmit = (data) => {
-    // funcionalidad: mostrar datos registrados
     alert(`¡Bienvenido, ${data.name}! Tu correo ${data.email} fue registrado.`)
-    reset() // limpiar formulario
+    reset()
   }
 
   return (
     <div className="container my-5">
-      <h2>Registro</h2>
+      <h2>Registro (react-hook-form)</h2>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className="mb-3">
           <label className="form-label">Nombre</label>

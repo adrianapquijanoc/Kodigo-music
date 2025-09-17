@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
 
 function Home() {
-  const user = JSON.parse(localStorage.getItem("user")); // Verificar si hay sesión
-
   const musicaDelMomento = [
     { 
       titulo: "Canción Pop 🎶", 
@@ -38,54 +36,81 @@ function Home() {
   ];
 
   return (
-    <div className="container mt-5 px-3">
+    <div className="text-white bg-dark">
       {/* Hero Section */}
-      <div className="p-5 mb-4 bg-primary text-white rounded-3 shadow-sm text-center">
-        <h1 className="display-6 fw-bold">
-          {user ? (
-            <>Bienvenido, <span className="text-warning">{user.name} 🎵</span></>
-          ) : (
-            <>Bienvenido a <span className="text-warning">Kodigo Music 🎵</span></>
-          )}
-        </h1>
-        <p className="fs-5">
-          Tu música favorita en un solo lugar, disponible en cualquier dispositivo.
-        </p>
-        <Link to="/about" className="btn btn-light btn-lg mt-3">
-          Explora ahora
+      <div className="p-5 mb-4 bg-black text-center">
+        <h1 className="display-4 fw-bold">Bienvenido a Kodigo Music 🎵</h1>
+        <p className="lead">Tu música favorita en un solo lugar, disponible en cualquier dispositivo.</p>
+        <Link to="/about" className="btn btn-success btn-lg mt-3">
+          Explorar ahora
         </Link>
       </div>
 
-      {/* Música del Momento */}
-      <div className="row my-5">
-        <div className="col-12 text-center mb-4">
-          <h2 className="fw-bold">🎶 Música del Momento</h2>
-        </div>
-        <div className="col-12 col-md-10 offset-md-1">
-          <Carousel interval={3000} pause="hover" className="shadow rounded-3">
-            {musicaDelMomento.map((cancion, index) => (
-              <Carousel.Item key={index}>
-                <img
-                  className="d-block w-100 img-fluid rounded-3"
-                  src={cancion.imagen}
-                  alt={`Portada de ${cancion.titulo}`}
-                  style={{ objectFit: "cover", maxHeight: "450px" }}
-                />
-                <Carousel.Caption className="bg-dark bg-opacity-75 rounded p-2">
-                  <h3 className="h5">{cancion.titulo}</h3>
-                  <p className="small">{cancion.artista}</p>
-                  <a 
-                    href={cancion.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="btn btn-sm btn-outline-light"
-                  >
-                    Escuchar en YouTube
-                  </a>
-                </Carousel.Caption>
-              </Carousel.Item>
-            ))}
-          </Carousel>
+      {/* Carrusel Música del Momento */}
+      <div className="container my-5">
+        <h2 className="mb-4 fw-bold text-center">🎶 Música del Momento</h2>
+        <Carousel interval={3000} pause="hover" className="shadow rounded-3">
+          {musicaDelMomento.map((cancion, index) => (
+            <Carousel.Item key={index}>
+              <img
+                className="d-block w-100 img-fluid rounded-3"
+                src={cancion.imagen}
+                alt={`Portada de ${cancion.titulo}`}
+                style={{ objectFit: "cover", maxHeight: "450px" }}
+              />
+              <Carousel.Caption className="bg-dark bg-opacity-75 rounded p-2">
+                <h3 className="h5">{cancion.titulo}</h3>
+                <p className="small">{cancion.artista}</p>
+                <a 
+                  href={cancion.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn btn-sm btn-outline-light"
+                >
+                  Escuchar en YouTube
+                </a>
+              </Carousel.Caption>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </div>
+
+      {/* Playlists destacadas */}
+      <div className="container my-5">
+        <h2 className="mb-4 fw-bold">🔥 Playlists Destacadas</h2>
+        <div className="row g-4">
+          <div className="col-md-4">
+            <div className="card bg-dark text-white shadow-lg">
+              <img src="https://picsum.photos/400/250?random=1" className="card-img-top" alt="Playlist 1" />
+              <div className="card-body">
+                <h5 className="card-title">Top Hits 2025</h5>
+                <p className="card-text">Las canciones más escuchadas ahora mismo.</p>
+                <a href="https://youtube.com" target="_blank" className="btn btn-success">Escuchar</a>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-4">
+            <div className="card bg-dark text-white shadow-lg">
+              <img src="https://picsum.photos/400/250?random=2" className="card-img-top" alt="Playlist 2" />
+              <div className="card-body">
+                <h5 className="card-title">Chill Vibes</h5>
+                <p className="card-text">Relájate con música suave y tranquila.</p>
+                <a href="https://youtube.com" target="_blank" className="btn btn-success">Escuchar</a>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-4">
+            <div className="card bg-dark text-white shadow-lg">
+              <img src="https://picsum.photos/400/250?random=3" className="card-img-top" alt="Playlist 3" />
+              <div className="card-body">
+                <h5 className="card-title">Workout Mix</h5>
+                <p className="card-text">Energía total para tus entrenamientos.</p>
+                <a href="https://youtube.com" target="_blank" className="btn btn-success">Escuchar</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

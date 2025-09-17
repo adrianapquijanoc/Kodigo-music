@@ -14,16 +14,19 @@ function Register() {
   };
 
   return (
-    <div className="container my-5">
+    <div className="container my-5 px-3">
       <div className="row justify-content-center">
-        <div className="col-12 col-md-8 col-lg-6">
+        {/* Responsive col: en XS ocupa 12, en SM 10, en MD 8 y en LG 6 */}
+        <div className="col-12 col-sm-10 col-md-8 col-lg-6">
           <div className="card shadow-lg p-4">
+            {/* Header */}
             <div className="card-header bg-dark text-white text-center mb-4 rounded-top">
               <h3 className="mb-0">
                 <i className="bi bi-person-plus-fill me-2"></i>Registro
               </h3>
             </div>
 
+            {/* Form */}
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
               {/* Nombre */}
               <div className="mb-3">
@@ -69,8 +72,7 @@ function Register() {
                     required: "La contraseña es obligatoria",
                     minLength: {
                       value: 6,
-                      message:
-                        "La contraseña debe tener al menos 6 caracteres",
+                      message: "La contraseña debe tener al menos 6 caracteres",
                     },
                   })}
                 />

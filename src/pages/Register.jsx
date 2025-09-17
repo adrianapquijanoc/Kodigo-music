@@ -1,38 +1,32 @@
-import React, { useState } from "react"
+import React from "react"
+import { useForm } from "react-hook-form"
 
 function Register() {
-  const [formData, setFormData] = useState({ name: "", email: "", password: "" })
-  const [errors, setErrors] = useState({})
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm()
 
-  const validate = () => {
-    let newErrors = {}
-    if (!formData.name) newErrors.name = "El nombre es obligatorio"
-    if (!formData.email.includes("@")) newErrors.email = "Debe ser un correo válido"
-    if (formData.password.length < 6) newErrors.password = "La contraseña debe tener al menos 6 caracteres"
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (validate()) {
-      alert("Formulario válido ✅ (aquí podrías enviar los datos)")
-    }
+  const onSubmit = (data) => {
+    // funcionalidad: mostrar datos registrados
+    alert(`¡Bienvenido, ${data.name}! Tu correo ${data.email} fue registrado.`)
+    reset() // limpiar formulario
   }
 
   return (
     <div className="container my-5">
       <h2>Registro</h2>
-      <form onSubmit={handleSubmit} noValidate>
+      <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className="mb-3">
           <label className="form-label">Nombre</label>
           <input
             type="text"
             className={`form-control ${errors.name ? "is-invalid" : ""}`}
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            {...register("name", { required: "El nombre es obligatorio" })}
           />
-          {errors.name && <div className="invalid-feedback">{errors.name}</div>}
+          {errors.name && <div className="invalid-feedback">{errors.name.message}</div>}
         </div>
 
         <div className="mb-3">
@@ -40,10 +34,15 @@ function Register() {
           <input
             type="email"
             className={`form-control ${errors.email ? "is-invalid" : ""}`}
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            {...register("email", {
+              required: "El correo es obligatorio",
+              pattern: {
+                value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
+                message: "Debe ser un correo válido",
+              },
+            })}
           />
-          {errors.email && <div className="invalid-feedback">{errors.email}</div>}
+          {errors.email && <div className="invalid-feedback">{errors.email.message}</div>}
         </div>
 
         <div className="mb-3">
@@ -51,13 +50,20 @@ function Register() {
           <input
             type="password"
             className={`form-control ${errors.password ? "is-invalid" : ""}`}
-            value={formData.password}
-            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+            {...register("password", {
+              required: "La contraseña es obligatoria",
+              minLength: {
+                value: 6,
+                message: "La contraseña debe tener al menos 6 caracteres",
+              },
+            })}
           />
-          {errors.password && <div className="invalid-feedback">{errors.password}</div>}
+          {errors.password && <div className="invalid-feedback">{errors.password.message}</div>}
         </div>
 
-        <button type="submit" className="btn btn-primary">Registrarse</button>
+        <button type="submit" className="btn btn-primary">
+          Registrarse
+        </button>
       </form>
     </div>
   )

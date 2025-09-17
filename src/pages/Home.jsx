@@ -5,112 +5,81 @@ function Home() {
   const musicaDelMomento = [
     { 
       titulo: "Canción Pop 🎶", 
-      artista: "Michael Jackson", 
-      imagen: "https://ichef.bbci.co.uk/ace/ws/800/cpsprodpb/1219D/production/_103214147_gettyimages-88688373.jpg.webp", 
-      url: "https://www.youtube.com/watch?v=m1w92hV5gRk&list=RDm1w92hV5gRk&start_radio=1" 
+      artista: "Artista Famoso", 
+      imagen: "https://via.placeholder.com/800x400",
+      url: "https://www.youtube.com/watch?v=abc123"  // 👈 enlace de ejemplo
     },
     { 
       titulo: "Hit del Verano 😎", 
-      artista: "Karol G", 
-      imagen:"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRNAuv7yPiyDR7WNIUncJ347YINWJyrr6wGjMofYZG3mOVZFF7BWP31DX3jlsiCyx3s1r4UydsXncTIZ8PRaFxf-HHLk4YFMNYNILmtwg", 
-      url:"https://www.youtube.com/watch?v=dhtlhXozNII&list=RDdhtlhXozNII&start_radio=1" 
+      artista: "Grupo del Momento", 
+      imagen: "https://via.placeholder.com/800x400",
+      url: "https://www.youtube.com/watch?v=def456" 
     },
     { 
       titulo: "Balada Épica ❤️", 
-      artista: "Shakira", 
-      imagen: "https://www.hola.com/horizon/landscape/701889d25af9-shakira-z.jpg", 
-      url: "https://www.youtube.com/watch?v=pWgVRK_Ggww&list=RDpWgVRK_Ggww&start_radio=1" 
+      artista: "Solista Estelar", 
+      imagen: "https://via.placeholder.com/800x400",
+      url: "https://www.youtube.com/watch?v=ghi789" 
     },
     { 
       titulo: "Ritmo Latino 💃", 
-      artista: "Grupo Niche", 
-      imagen: "https://pluranza.com/wp-content/uploads/2023/04/grupo-niche-los-maestros-de-la-salsa-scaled.jpeg", 
-      url: "https://www.youtube.com/watch?v=yEqhKXOkUlA&list=RDyEqhKXOkUlA&start_radio=1" 
+      artista: "Banda Caliente", 
+      imagen: "https://via.placeholder.com/800x400",
+      url: "https://www.youtube.com/watch?v=jkl012" 
     },
     { 
       titulo: "Rock Clásico 🤘", 
-      artista: "Maná", 
-      imagen: "https://es.rollingstone.com/wp-content/uploads/2025/02/Mana-se-convierte-en-la-primera-banda-en-espanol-en-ser-nominada-Salon-de-la-Fama-del-Rock-Roll-min.jpg", 
-      url: "https://www.youtube.com/watch?v=OhXeBoTlCr4&list=RDEM3r4XQJ7Rf7EIvHeRQyXRAA&index=3" 
+      artista: "Leyenda del Rock", 
+      imagen: "https://via.placeholder.com/800x400",
+      url: "https://www.youtube.com/watch?v=mno345" 
     },
   ];
 
   return (
-    <div className="text-white bg-dark">
+    <div className="container mt-5">
       {/* Hero Section */}
-      <div className="p-5 mb-4 bg-black text-center">
-        <h1 className="display-4 fw-bold">Bienvenido a Kodigo Music 🎵</h1>
-        <p className="lead">Tu música favorita en un solo lugar, disponible en cualquier dispositivo.</p>
-        <Link to="/about" className="btn btn-success btn-lg mt-3">
-          Explorar ahora
-        </Link>
+      <div className="p-5 mb-4 bg-primary text-white rounded-3 shadow-sm">
+        <div className="container-fluid py-5 text-center">
+          <h1 className="display-5 fw-bold">Bienvenido a Kodigo Music 🎵</h1>
+          <p className="fs-5">
+            Tu música favorita en un solo lugar, disponible en cualquier dispositivo.
+          </p>
+          <Link to="/about" className="btn btn-light btn-lg mt-3">
+            Explora ahora
+          </Link>
+        </div>
       </div>
 
-      {/* Carrusel Música del Momento */}
-      <div className="container my-5">
-        <h2 className="mb-4 fw-bold text-center">🎶 Música del Momento</h2>
-        <Carousel interval={3000} pause="hover" className="shadow rounded-3">
-          {musicaDelMomento.map((cancion, index) => (
-            <Carousel.Item key={index}>
-              <img
-                className="d-block w-100 img-fluid rounded-3"
-                src={cancion.imagen}
-                alt={`Portada de ${cancion.titulo}`}
-                style={{ objectFit: "cover", maxHeight: "450px" }}
-              />
-              <Carousel.Caption className="bg-dark bg-opacity-75 rounded p-2">
-                <h3 className="h5">{cancion.titulo}</h3>
-                <p className="small">{cancion.artista}</p>
-                <a 
-                  href={cancion.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="btn btn-sm btn-outline-light"
-                >
-                  Escuchar en YouTube
-                </a>
-              </Carousel.Caption>
-            </Carousel.Item>
-          ))}
-        </Carousel>
-      </div>
-
-      {/* Playlists destacadas */}
-      <div className="container my-5">
-        <h2 className="mb-4 fw-bold">🔥 Playlists Destacadas</h2>
-        <div className="row g-4">
-          <div className="col-md-4">
-            <div className="card bg-dark text-white shadow-lg">
-              <img src="https://picsum.photos/400/250?random=1" className="card-img-top" alt="Playlist 1" />
-              <div className="card-body">
-                <h5 className="card-title">Top Hits 2025</h5>
-                <p className="card-text">Las canciones más escuchadas ahora mismo.</p>
-                <a href="https://youtube.com" target="_blank" className="btn btn-success">Escuchar</a>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-4">
-            <div className="card bg-dark text-white shadow-lg">
-              <img src="https://picsum.photos/400/250?random=2" className="card-img-top" alt="Playlist 2" />
-              <div className="card-body">
-                <h5 className="card-title">Chill Vibes</h5>
-                <p className="card-text">Relájate con música suave y tranquila.</p>
-                <a href="https://youtube.com" target="_blank" className="btn btn-success">Escuchar</a>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-4">
-            <div className="card bg-dark text-white shadow-lg">
-              <img src="https://picsum.photos/400/250?random=3" className="card-img-top" alt="Playlist 3" />
-              <div className="card-body">
-                <h5 className="card-title">Workout Mix</h5>
-                <p className="card-text">Energía total para tus entrenamientos.</p>
-                <a href="https://youtube.com" target="_blank" className="btn btn-success">Escuchar</a>
-              </div>
-            </div>
-          </div>
+      {/* Música del Momento */}
+      <div className="row my-5">
+        <div className="col-12 text-center mb-4">
+          <h2 className="fw-bold">Música del Momento</h2>
+        </div>
+        <div className="col-12 col-md-10 offset-md-1">
+          <Carousel interval={3000} pause="hover" className="shadow rounded-3">
+            {musicaDelMomento.map((cancion, index) => (
+              <Carousel.Item key={index}>
+                <img
+                  className="d-block w-100 img-fluid rounded-3"
+                  src={cancion.imagen}
+                  alt={`Portada de ${cancion.titulo}`}
+                />
+                <Carousel.Caption className="bg-dark bg-opacity-75 rounded p-2">
+                  <h3 className="h5">{cancion.titulo}</h3>
+                  <p className="small">{cancion.artista}</p>
+                  {/* 🔗 Botón que abre el link de YouTube */}
+                  <a 
+                    href={cancion.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-sm btn-outline-light"
+                  >
+                    Escuchar
+                  </a>
+                </Carousel.Caption>
+              </Carousel.Item>
+            ))}
+          </Carousel>
         </div>
       </div>
     </div>
@@ -118,3 +87,4 @@ function Home() {
 }
 
 export default Home;
+

@@ -35,38 +35,37 @@ function Home() {
     },
   ];
 
+  const playlistsDestacadas = [
+    { titulo: "Top Hits 2025", desc: "Las canciones más escuchadas ahora mismo.", img: "https://picsum.photos/400/250?random=1" },
+    { titulo: "Chill Vibes", desc: "Relájate con música suave y tranquila.", img: "https://picsum.photos/400/250?random=2" },
+    { titulo: "Workout Mix", desc: "Energía total para tus entrenamientos.", img: "https://picsum.photos/400/250?random=3" }
+  ];
+
   return (
-    <div className="text-white bg-dark">
-      {/* Hero Section */}
-      <div className="p-5 mb-4 bg-black text-center">
-        <h1 className="display-4 fw-bold">Bienvenido a Kodigo Music 123🎵</h1>
+    <div className="bg-dark text-light">
+      {/* HERO */}
+      <div className="p-5 text-center bg-black">
+        <h1 className="display-4 fw-bold">Bienvenido a Kodigo Music 🎵</h1>
         <p className="lead">Tu música favorita en un solo lugar, disponible en cualquier dispositivo.</p>
-        <Link to="/about" className="btn btn-success btn-lg mt-3">
-          Explorar ahora
-        </Link>
+        <Link to="/about" className="btn btn-success btn-lg mt-3">Explorar ahora</Link>
       </div>
 
-      {/* Carrusel Música del Momento */}
+      {/* CARRUSEL */}
       <div className="container my-5">
-        <h2 className="mb-4 fw-bold text-center">🎶 Música del Momento</h2>
+        <h2 className="text-center fw-bold mb-4">🎶 Música del Momento</h2>
         <Carousel interval={3000} pause="hover" className="shadow rounded-3">
-          {musicaDelMomento.map((cancion, index) => (
-            <Carousel.Item key={index}>
+          {musicaDelMomento.map((cancion, i) => (
+            <Carousel.Item key={i}>
               <img
-                className="d-block w-100 img-fluid rounded-3"
                 src={cancion.imagen}
-                alt={`Portada de ${cancion.titulo}`}
+                alt={cancion.titulo}
+                className="d-block w-100 rounded-3"
                 style={{ objectFit: "cover", maxHeight: "450px" }}
               />
               <Carousel.Caption className="bg-dark bg-opacity-75 rounded p-2">
-                <h3 className="h5">{cancion.titulo}</h3>
-                <p className="small">{cancion.artista}</p>
-                <a 
-                  href={cancion.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="btn btn-sm btn-outline-light"
-                >
+                <h5>{cancion.titulo}</h5>
+                <p>{cancion.artista}</p>
+                <a href={cancion.url} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline-light">
                   Escuchar en YouTube
                 </a>
               </Carousel.Caption>
@@ -75,17 +74,13 @@ function Home() {
         </Carousel>
       </div>
 
-      {/* Playlists destacadas */}
+      {/* PLAYLISTS DESTACADAS */}
       <div className="container my-5">
-        <h2 className="mb-4 fw-bold text-center">🔥 Playlists Destacadas</h2>
+        <h2 className="text-center fw-bold mb-4">🔥 Playlists Destacadas</h2>
         <div className="row g-4">
-          {[ 
-            { titulo: "Top Hits 2025", desc: "Las canciones más escuchadas ahora mismo.", img: "https://picsum.photos/400/250?random=1" },
-            { titulo: "Chill Vibes", desc: "Relájate con música suave y tranquila.", img: "https://picsum.photos/400/250?random=2" },
-            { titulo: "Workout Mix", desc: "Energía total para tus entrenamientos.", img: "https://picsum.photos/400/250?random=3" }
-          ].map((playlist, i) => (
+          {playlistsDestacadas.map((playlist, i) => (
             <div key={i} className="col-12 col-md-4">
-              <div className="card bg-dark text-white shadow-lg h-100 playlist-card">
+              <div className="card bg-dark text-light shadow-lg h-100 playlist-card">
                 <img src={playlist.img} className="card-img-top" alt={playlist.titulo} />
                 <div className="card-body text-center">
                   <h5 className="card-title">{playlist.titulo}</h5>
@@ -100,18 +95,16 @@ function Home() {
         </div>
       </div>
 
-      {/* Extra estilos */}
-      <style>
-        {`
-          .playlist-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-          }
-          .playlist-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-          }
-        `}
-      </style>
+      {/* ESTILO HOVER */}
+      <style>{`
+        .playlist-card {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .playlist-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+      `}</style>
     </div>
   );
 }

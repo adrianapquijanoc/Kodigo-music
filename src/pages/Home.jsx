@@ -20,47 +20,29 @@ function Home() {
       artista: "Shakira", 
       imagen: "https://www.hola.com/horizon/landscape/701889d25af9-shakira-z.jpg", 
       url: "https://www.youtube.com/watch?v=pWgVRK_Ggww&list=RDpWgVRK_Ggww&start_radio=1" 
-    },
-    { 
-      titulo: "Ritmo Latino 💃", 
-      artista: "Grupo Niche", 
-      imagen: "https://pluranza.com/wp-content/uploads/2023/04/grupo-niche-los-maestros-de-la-salsa-scaled.jpeg", 
-      url: "https://www.youtube.com/watch?v=yEqhKXOkUlA&list=RDyEqhKXOkUlA&start_radio=1" 
-    },
-    { 
-      titulo: "Rock Clásico 🤘", 
-      artista: "Maná", 
-      imagen: "https://es.rollingstone.com/wp-content/uploads/2025/02/Mana-se-convierte-en-la-primera-banda-en-espanol-en-ser-nominada-Salon-de-la-Fama-del-Rock-Roll-min.jpg", 
-      url: "https://www.youtube.com/watch?v=OhXeBoTlCr4&list=RDEM3r4XQJ7Rf7EIvHeRQyXRAA&index=3" 
-    },
-  ];
-
-  const playlistsDestacadas = [
-    { titulo: "Top Hits 2025", desc: "Las canciones más escuchadas ahora mismo.", img: "https://picsum.photos/400/250?random=1" },
-    { titulo: "Chill Vibes", desc: "Relájate con música suave y tranquila.", img: "https://picsum.photos/400/250?random=2" },
-    { titulo: "Workout Mix", desc: "Energía total para tus entrenamientos.", img: "https://picsum.photos/400/250?random=3" }
+    }
   ];
 
   return (
-    <div className="bg-dark text-light">
-      {/* HERO */}
-      <div className="p-5 text-center bg-black">
-        <h1 className="display-4 fw-bold">Bienvenido a Kodigo Music 🎵</h1>
+    <div className="bg-dark text-white">
+      {/* Hero */}
+      <div className="text-center py-5 bg-primary">
+        <h1 className="display-4 fw-bold">Bienvenido a <span className="text-warning">Kodigo Music 🎵</span></h1>
         <p className="lead">Tu música favorita en un solo lugar, disponible en cualquier dispositivo.</p>
-        <Link to="/about" className="btn btn-success btn-lg mt-3">Explorar ahora</Link>
+        <Link to="/about" className="btn btn-light btn-lg mt-3">Explorar ahora</Link>
       </div>
 
-      {/* CARRUSEL */}
+      {/* Carrusel */}
       <div className="container my-5">
         <h2 className="text-center fw-bold mb-4">🎶 Música del Momento</h2>
         <Carousel interval={3000} pause="hover" className="shadow rounded-3">
-          {musicaDelMomento.map((cancion, i) => (
-            <Carousel.Item key={i}>
+          {musicaDelMomento.map((cancion, index) => (
+            <Carousel.Item key={index}>
               <img
+                className="d-block w-100 rounded-3"
                 src={cancion.imagen}
                 alt={cancion.titulo}
-                className="d-block w-100 rounded-3"
-                style={{ objectFit: "cover", maxHeight: "450px" }}
+                style={{ maxHeight: "450px", objectFit: "cover" }}
               />
               <Carousel.Caption className="bg-dark bg-opacity-75 rounded p-2">
                 <h5>{cancion.titulo}</h5>
@@ -73,38 +55,6 @@ function Home() {
           ))}
         </Carousel>
       </div>
-
-      {/* PLAYLISTS DESTACADAS */}
-      <div className="container my-5">
-        <h2 className="text-center fw-bold mb-4">🔥 Playlists Destacadas</h2>
-        <div className="row g-4">
-          {playlistsDestacadas.map((playlist, i) => (
-            <div key={i} className="col-12 col-md-4">
-              <div className="card bg-dark text-light shadow-lg h-100 playlist-card">
-                <img src={playlist.img} className="card-img-top" alt={playlist.titulo} />
-                <div className="card-body text-center">
-                  <h5 className="card-title">{playlist.titulo}</h5>
-                  <p className="card-text">{playlist.desc}</p>
-                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="btn btn-success">
-                    Escuchar
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ESTILO HOVER */}
-      <style>{`
-        .playlist-card {
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .playlist-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-      `}</style>
     </div>
   );
 }
